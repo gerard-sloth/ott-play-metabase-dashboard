@@ -1,0 +1,31 @@
+# Render deployment configuration
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  # --- Metabase BI dashboard ---
+  - type: web
+    name: metabase
+    env: docker
+    image:
+      url: metabase/metabase:latest
+    plan: starter          # Starter ($7/mo) required for persistent disk
+    disk:
+      name: metabase-data
+      mountPath: /metabase-data
+      sizeGB: 1
+    envVars:
+      - key: MB_DB_FILE
+        value: /metabase-data/metabase.db
+
+  # --- Analytics sync worker (run manually or on a schedule) ---
+  # This is a one-off worker: trigger it from Render dashboard or a cron.
+  - type: worker
+    name: analytics-sync
+    env: python
+    runtime: python
+    buildCommand: pip install uv && uv sync
+    startCommand: uv run python -m src.analytics_sync
+    plan: free
+    envVars:
+      - key: MONGODB_URI
+        sync: false        # Set this secret in the Render dashboard
