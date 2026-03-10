@@ -1,10 +1,11 @@
 """
 Analytics collections sync script for Metabase.
 
-Populates three denormalized collections in the renderboard database:
-  - analytics_user_snapshots  (upsert by userId)
+Populates four denormalized collections in the renderboard database:
+  - analytics_user_snapshots  (upsert by mongoId)
   - analytics_chat_events     (insert-once by messageId)
   - analytics_daily_stats     (replace by day)
+  - analytics_topic_events    (replace by storyId — one row per pointsEvent)
 
 Usage:
     uv run python -m src.analytics_sync
@@ -44,6 +45,9 @@ def ensure_indexes(db) -> None:
     )
     db["analytics_daily_stats"].create_index(
         [("day", ASCENDING)], unique=True, background=True
+    )
+    db["analytics_topic_events"].create_index(
+        [("storyId", ASCENDING), ("eventIndex", ASCENDING)], unique=True, background=True
     )
     print("  Indexes verified.")
 
@@ -185,7 +189,25 @@ def process_story(story: dict) -> tuple[dict, list[dict]]:
         elif role == "user":
             prev_assistant_ts = None
 
-    return snapshot, chat_events
+    # ---- Topic events (one per pointsEvent entry) ----
+    topic_events: list[dict] = []
+    for i, pe in enumerate(points_events):
+        ts = _parse_ts(pe.get("createdAt"))
+        topic_events.append({
+            "storyId": story_id,
+            "userId": user_id,
+            "eventIndex": i,
+            "eventType": pe.get("type"),
+            "topic": pe.get("topic"),
+            "quality": pe.get("score"),
+            "gained": pe.get("gained"),
+            "totalAfter": pe.get("totalAfter"),
+            "createdAt": ts,
+            "day": ts.strftime("%Y-%m-%d") if ts else None,
+            "isTest": is_test,
+        })
+
+    return snapshot, chat_events, topic_events
 
 
 # ---------------------------------------------------------------------------
@@ -253,13 +275,15 @@ def sync_all(include_test: bool = False) -> None:
 
     all_snapshots: list[dict] = []
     all_events: list[dict] = []
+    all_topic_events: list[dict] = []
     daily_buckets: dict[str, list[dict]] = {}
 
     for story in stories:
         try:
-            snapshot, events = process_story(story)
+            snapshot, events, topic_events = process_story(story)
             all_snapshots.append(snapshot)
             all_events.extend(events)
+            all_topic_events.extend(topic_events)
             for event in events:
                 day = event.get("day")
                 if day:
@@ -296,6 +320,17 @@ def sync_all(include_test: bool = False) -> None:
         db["analytics_daily_stats"].replace_one({"day": day}, stats, upsert=True)
         days_written += 1
     print(f"  Wrote {days_written} daily stat records.")
+
+    # Replace topic events per story (full replace so re-runs are idempotent)
+    topic_upserted = 0
+    for te in all_topic_events:
+        db["analytics_topic_events"].replace_one(
+            {"storyId": te["storyId"], "eventIndex": te["eventIndex"]},
+            te,
+            upsert=True,
+        )
+        topic_upserted += 1
+    print(f"  Upserted {topic_upserted} topic events.")
 
     print("Sync complete.")
 
