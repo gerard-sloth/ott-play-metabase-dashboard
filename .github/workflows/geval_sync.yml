@@ -1,0 +1,25 @@
+name: GEval Sync
+
+on:
+  schedule:
+    - cron: '0 0,8,16 * * *'   # every 8 hours: 00:00, 08:00, 16:00 UTC
+  workflow_dispatch:              # allow manual trigger from GitHub UI
+
+jobs:
+  geval:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Run GEval sync
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: uv run python scripts/run_geval.py

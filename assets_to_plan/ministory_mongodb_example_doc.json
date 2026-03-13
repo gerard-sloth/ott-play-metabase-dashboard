@@ -1,0 +1,681 @@
+{
+  "_id": {
+    "$oid": "699dbf191f8970918c2c2b94"
+  },
+  "id": "mini-story-real-002",
+  "userId": "699da6d1cf2dca746ee74424",
+  "title": "the plastic car",
+  "characters": [],
+  "environments": [],
+  "improvementState": {
+    "score": 88,
+    "level": 1,
+    "pendingLevelCompletion": false,
+    "levelThreshold": 100,
+    "maxLevels": 7,
+    "lastPointsDelta": 10,
+    "pointsEvents": [
+      {
+        "type": "pitch",
+        "gained": 13,
+        "totalAfter": 13,
+        "rationale": "",
+        "createdAt": {
+          "$date": "2026-03-02T18:00:16.293Z"
+        }
+      },
+      {
+        "type": "interaction",
+        "gained": 5,
+        "totalAfter": 18,
+        "score": "basic",
+        "topic": "story",
+        "createdAt": {
+          "$date": "2026-03-02T18:01:09.243Z"
+        }
+      },
+      {
+        "type": "interaction",
+        "gained": 10,
+        "totalAfter": 28,
+        "score": "strong",
+        "topic": "story",
+        "createdAt": {
+          "$date": "2026-03-02T18:03:31.588Z"
+        }
+      },
+      {
+        "type": "interaction",
+        "gained": 10,
+        "totalAfter": 38,
+        "score": "strong",
+        "topic": "story",
+        "createdAt": {
+          "$date": "2026-03-02T18:06:53.975Z"
+        }
+      },
+      {
+        "type": "interaction",
+        "gained": 10,
+        "totalAfter": 48,
+        "score": "strong",
+        "topic": "character",
+        "createdAt": {
+          "$date": "2026-03-03T08:07:09.474Z"
+        }
+      },
+      {
+        "type": "interaction",
+        "gained": 5,
+        "totalAfter": 53,
+        "score": "basic",
+        "topic": "character",
+        "createdAt": {
+          "$date": "2026-03-03T08:10:33.423Z"
+        }
+      },
+      {
+        "type": "interaction",
+        "gained": 10,
+        "totalAfter": 63,
+        "score": "strong",
+        "topic": "location",
+        "createdAt": {
+          "$date": "2026-03-03T08:14:31.798Z"
+        }
+      },
+      {
+        "type": "interaction",
+        "gained": 5,
+        "totalAfter": 68,
+        "score": "basic",
+        "topic": "location",
+        "createdAt": {
+          "$date": "2026-03-03T08:16:07.411Z"
+        }
+      },
+      {
+        "type": "interaction",
+        "gained": 10,
+        "totalAfter": 78,
+        "score": "strong",
+        "topic": "location",
+        "createdAt": {
+          "$date": "2026-03-03T08:18:03.612Z"
+        }
+      },
+      {
+        "type": "interaction",
+        "gained": 10,
+        "totalAfter": 88,
+        "score": "strong",
+        "topic": "story",
+        "createdAt": {
+          "$date": "2026-03-03T08:54:58.774Z"
+        }
+      }
+    ],
+    "story": {
+      "status": "empty",
+      "score": 35,
+      "updatedAt": {
+        "$date": "2026-03-03T08:54:58.774Z"
+      }
+    },
+    "characters": {
+      "0abc23c0-867e-4d3d-bfdd-0b83adc48813": {
+        "status": "empty",
+        "score": 15,
+        "name": "the foreman",
+        "updatedAt": {
+          "$date": "2026-03-03T08:10:33.423Z"
+        }
+      },
+      "269c6783-e263-480f-9282-a7df9dafcbb2": {
+        "status": "empty",
+        "score": 0,
+        "name": "the kids in town"
+      }
+    },
+    "locations": {
+      "4d6552c0-e35a-4e3f-a38d-800f0f649d3a": {
+        "status": "empty",
+        "score": 25,
+        "name": "a small town",
+        "updatedAt": {
+          "$date": "2026-03-03T08:18:03.612Z"
+        }
+      },
+      "e34de7ea-5ce1-451f-ac2d-abaabe3bdebc": {
+        "status": "empty",
+        "score": 0,
+        "name": "another (far) town"
+      }
+    },
+    "lockedSummaries": [],
+    "updatedAt": {
+      "$date": "2026-03-03T08:54:58.775Z"
+    }
+  },
+  "test": true,
+  "createdAt": {
+    "$date": "2026-02-20T14:00:14.202Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-06T09:54:12.135Z"
+  },
+  "chatSession": {
+    "sessionId": "bbe50fb0-6925-4220-af6e-706ae8e43afc",
+    "createdAt": {
+      "$date": "2026-03-02T18:00:30.785Z"
+    },
+    "updatedAt": {
+      "$date": "2026-03-06T09:54:12.135Z"
+    },
+    "messages": [
+      {
+        "role": "assistant",
+        "content": "Welcome! 👋\nWe’ve saved your pitch. Everything is safely stored, and you can see the details anytime in your story overview.",
+        "displayContent": "Welcome! 👋\nWe’ve saved your pitch. Everything is safely stored, and you can see the details anytime in your story overview.",
+        "messageType": "assistant_response",
+        "messageId": "welcome-mini-story-real-002",
+        "timestamp": {
+          "$date": "2026-03-02T18:00:30.785Z"
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "Once upon a time, a foreman working in a small town decided to take a job in another town. That second town was far and he needed a car but he had no driving license. He decided to buy a plastic car (Aixam) that required no license but the car looked so much like a toy that all the kids in town were making fun of him and even trying to turn around the car.\n\nEach morning going to work turned into a full exercise of hide from the kids in town and go full gas to escape from them.",
+        "displayContent": "Once upon a time, a foreman working in a small town decided to take a job in another town. That second town was far and he needed a car but he had no driving license. He decided to buy a plastic car (Aixam) that required no license but the car looked so much like a toy that all the kids in town were making fun of him and even trying to turn around the car.\n\nEach morning going to work turned into a full exercise of hide from the kids in town and go full gas to escape from them.",
+        "messageType": "assistant_response",
+        "messageId": "pitch-mini-story-real-002",
+        "timestamp": {
+          "$date": "2026-03-02T18:00:30.785Z"
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "You’ve already earned 13 points from the pitch, great start! ✨ Every choice you make here will grow your story world and earn more points.",
+        "displayContent": "You’ve already earned 13 points from the pitch, great start! ✨ Every choice you make here will grow your story world and earn more points.",
+        "messageType": "assistant_response",
+        "messageId": "points-mini-story-real-002",
+        "timestamp": {
+          "$date": "2026-03-02T18:00:30.785Z"
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "To get started, what would you like to work on first? Story, Character, or Location?",
+        "displayContent": "To get started, what would you like to work on first? Story, Character, or Location?",
+        "messageType": "assistant_response",
+        "messageId": "triage-mini-story-real-002",
+        "timestamp": {
+          "$date": "2026-03-02T18:00:30.785Z"
+        },
+        "toolCalls": [
+          {
+            "type": "workflow_multiple_choice",
+            "params": {},
+            "data": {
+              "options": [
+                "Start"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": "Story",
+        "messageType": "user_input",
+        "messageId": "7c8a71cd-07ab-4fee-a2e4-d863641800ed",
+        "timestamp": {
+          "$date": "2026-03-02T18:00:57.505Z"
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "The foreman needs the Aixam to reach the far town, but the kids keep trying to flip it like a toy. Which ending do you want?",
+        "messageType": "assistant_response",
+        "messageId": "d23f6412-f8ab-4762-83ad-7c2a3a8570fb",
+        "timestamp": {
+          "$date": "2026-03-02T18:01:09.142Z"
+        },
+        "toolCalls": [
+          {
+            "type": "workflow_multiple_choice",
+            "data": {
+              "options": [
+                "The kids finally tip the Aixam over, and he has to walk to the far town.",
+                "He shows up early, the kids chase him, and he barely makes it to work.",
+                "He parks the Aixam in public, and the whole town watches him get mocked.",
+                "A kid gets hurt trying to flip the Aixam, so everyone blames the foreman.",
+                "Other — type your own answer"
+              ]
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 5649,
+          "cached_tokens": 2688,
+          "output_tokens": 422,
+          "total_tokens": 6071
+        }
+      },
+      {
+        "role": "user",
+        "content": "The real ereason the man couldn't  get the driving license was because he had dsome disabilty where his brain could stopp working during some seconds. Also he couldn't affor a self driving card becuase he spend all the money in cancer treatment for his mother",
+        "messageType": "user_input",
+        "messageId": "49b6b892-444a-4e9e-8d7c-97aa259e64cf",
+        "timestamp": {
+          "$date": "2026-03-02T18:03:16.564Z"
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "He needs the toy-looking Aixam to reach that far town. The kids treat it like a joke. We now know he has blackouts and no money because of his mom’s cancer treatment. By the final scene, what should the audience realize about his choice to drive without a license?",
+        "messageType": "assistant_response",
+        "messageId": "a8576689-39cf-4426-bbb2-a88232a938c2",
+        "timestamp": {
+          "$date": "2026-03-02T18:03:31.494Z"
+        },
+        "toolCalls": [
+          {
+            "type": "workflow_multiple_choice",
+            "data": {
+              "options": [
+                "He freezes for a few seconds mid-chase, and the kids finally see he is sick.",
+                "He opens a hospital bill for his mom, and the loudest kid goes quiet.",
+                "His boss in the far town rides with him once, so the kids cannot mock him.",
+                "The police stop the Aixam, but they let him go after hearing why.",
+                "Other — type your own answer"
+              ]
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 7256,
+          "cached_tokens": 2688,
+          "output_tokens": 394,
+          "total_tokens": 7650
+        }
+      },
+      {
+        "role": "user",
+        "content": "I think he just let's the kid move the card and he fades out of his sickness, the kids thing they kill the man and start being super sad. Btu after some minutes the man wakes up and tell the kid his story",
+        "messageType": "user_input",
+        "messageId": "6e8d7513-2188-4322-b651-513ddacaece6",
+        "timestamp": {
+          "$date": "2026-03-02T18:06:40.029Z"
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "The kid thinks he killed the foreman after the blackout. Now it's about whether he runs or finally listens and changes. When the foreman wakes and tells his story, what exact detail does he show the kid so the kid believes him?",
+        "messageType": "assistant_response",
+        "messageId": "e5175901-8a4a-4d14-8981-3cdbe9d3f096",
+        "timestamp": {
+          "$date": "2026-03-02T18:06:53.882Z"
+        },
+        "usage": {
+          "input_tokens": 7516,
+          "cached_tokens": 0,
+          "output_tokens": 298,
+          "total_tokens": 7814
+        }
+      },
+      {
+        "role": "user",
+        "content": "The kid was crying really hard after what happened, but the man warmly tells the kid that everything is alright, in a pedagocial way explains the story",
+        "messageType": "user_input",
+        "messageId": "f72d2fb6-7139-46d0-b5d5-2912ba08c542",
+        "timestamp": {
+          "$date": "2026-03-03T08:07:01.047Z"
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "OK, now let’s talk about the Character, Picture the foreman climbing into the plastic Aixam at dawn. What do you notice first about him?",
+        "messageType": "assistant_response",
+        "messageId": "05b4cefe-1b48-40b9-bcb0-8ba8cb4e0a5c",
+        "timestamp": {
+          "$date": "2026-03-03T08:07:09.380Z"
+        },
+        "toolCalls": [
+          {
+            "type": "workflow_multiple_choice",
+            "data": {
+              "options": [
+                "His work jacket is too big, and the dawn wind flaps it hard.",
+                "He is hunched low, squeezing his shoulders into the tiny plastic Aixam seat.",
+                "His hands shake on the steering wheel, like he is scared of blacking out.",
+                "He has dried mud on his boots, and he smells like the work site.",
+                "Other — type your own answer"
+              ]
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 8555,
+          "cached_tokens": 2688,
+          "output_tokens": 413,
+          "total_tokens": 8968
+        }
+      },
+      {
+        "role": "user",
+        "content": "why at dawn?",
+        "messageType": "user_input",
+        "messageId": "cd81b9eb-b82e-4a64-9c6c-ca3144408d33",
+        "timestamp": {
+          "$date": "2026-03-03T08:08:35.241Z"
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "Good catch, dawn is just a clear time when the small town streets are quiet and the kids can spot him fast, so which moment makes the foreman look most like himself in this story?",
+        "messageType": "assistant_response",
+        "messageId": "30afebc0-0cdc-41a9-b228-975a2b84beb9",
+        "timestamp": {
+          "$date": "2026-03-03T08:08:43.050Z"
+        },
+        "toolCalls": [
+          {
+            "type": "workflow_multiple_choice",
+            "data": {
+              "options": [
+                "He climbs into the plastic Aixam at noon, sweating, with kids already circling him.",
+                "He starts the plastic Aixam at dusk, headlights on, trying to sneak past loud kids.",
+                "He sits in the plastic Aixam at sunrise, breath fogging the window, watching for kids.",
+                "He wipes rain off the plastic Aixam at morning, then hears kids laughing nearby.",
+                "Other — type your own answer"
+              ]
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 8926,
+          "cached_tokens": 0,
+          "output_tokens": 425,
+          "total_tokens": 9351
+        }
+      },
+      {
+        "role": "user",
+        "content": "he's just a normal man, typical public state officer that has this 9-5 job, never gets out of his nerves.",
+        "messageType": "user_input",
+        "messageId": "e581269b-8294-4c4c-bbf1-8bc20a932f3c",
+        "timestamp": {
+          "$date": "2026-03-03T08:10:28.873Z"
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "OK, so he feels like a normal public worker with a calm vibe, anything else you want to add about the foreman’s look or vibe before we move on?",
+        "messageType": "assistant_response",
+        "messageId": "3500e896-4a2d-4825-869e-f59bcda8448c",
+        "timestamp": {
+          "$date": "2026-03-03T08:10:33.329Z"
+        },
+        "usage": {
+          "input_tokens": 9256,
+          "cached_tokens": 2688,
+          "output_tokens": 294,
+          "total_tokens": 9550
+        }
+      },
+      {
+        "role": "user",
+        "content": "He's quite tall and thin. Always walking at the same pace, like he's never in a rush. Like he has evertyhing under control, pure gentleman. A bit white skin, not been under the sun much.",
+        "messageType": "user_input",
+        "messageId": "9df02e9f-fa2e-422a-ace5-0cef9e47b183",
+        "timestamp": {
+          "$date": "2026-03-03T08:14:21.999Z"
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "OK, now let’s talk about the Location, when you step onto the small town street in the morning, what do you see first?",
+        "messageType": "assistant_response",
+        "messageId": "69ec923b-dc24-40e8-af49-d659edf56838",
+        "timestamp": {
+          "$date": "2026-03-03T08:14:31.612Z"
+        },
+        "toolCalls": [
+          {
+            "type": "workflow_multiple_choice",
+            "data": {
+              "options": [
+                "A bakery door is open, and warm bread smell leaks onto the street.",
+                "A tiny town square has a dry fountain and old benches with peeling paint.",
+                "A narrow road has parked scooters, and the plastic Aixam looks extra small.",
+                "A school gate is right there, and kids’ bikes are piled by the wall.",
+                "Other — type your own answer"
+              ]
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 9614,
+          "cached_tokens": 2688,
+          "output_tokens": 404,
+          "total_tokens": 10018
+        }
+      },
+      {
+        "role": "user",
+        "content": "which small town the new or the old one?",
+        "messageType": "user_input",
+        "messageId": "223ee303-0c4e-4208-818f-f81ce85267f2",
+        "timestamp": {
+          "$date": "2026-03-03T08:16:00.710Z"
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "OK, for the Location, pick which street we are talking about so the picture stays clear, which one is it?",
+        "messageType": "assistant_response",
+        "messageId": "f97c5bf4-0eac-4bf8-a072-daf784cf97a8",
+        "timestamp": {
+          "$date": "2026-03-03T08:16:07.225Z"
+        },
+        "toolCalls": [
+          {
+            "type": "workflow_multiple_choice",
+            "data": {
+              "options": [
+                "His old small town street, where kids already know the plastic Aixam and laugh early.",
+                "The new small town street near his home now, where the Aixam looks strange parked.",
+                "The old small town main square street, with the bakery open and kids’ bikes stacked.",
+                "The new town’s street by his job, where he tries to act normal in the Aixam.",
+                "Other — type your own answer"
+              ]
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 10012,
+          "cached_tokens": 2688,
+          "output_tokens": 403,
+          "total_tokens": 10415
+        }
+      },
+      {
+        "role": "user",
+        "content": "Let's go for the new town, it's small typical town from Belguim, Cobbled streets, very homely. The river crosses the town.",
+        "messageType": "user_input",
+        "messageId": "a95a66c6-fbdc-464b-a225-3dbe40a14bb4",
+        "timestamp": {
+          "$date": "2026-03-03T08:17:57.140Z"
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "OK, so we have the new Belgian small town with cobbled streets, a homely feel, and a river cutting through it, anything else you want to add about this street in the morning?",
+        "messageType": "assistant_response",
+        "messageId": "8418bb9b-70d4-4ce4-8129-79259b341197",
+        "timestamp": {
+          "$date": "2026-03-03T08:18:03.417Z"
+        },
+        "usage": {
+          "input_tokens": 10410,
+          "cached_tokens": 2688,
+          "output_tokens": 310,
+          "total_tokens": 10720
+        }
+      },
+      {
+        "role": "user",
+        "content": "It smells like recently baked bread. Kids are going to school by bike, is winter so it's freezing, but they are brave",
+        "messageType": "user_input",
+        "messageId": "e80530f8-491a-4ebd-a7ad-7c504f7da08b",
+        "timestamp": {
+          "$date": "2026-03-03T08:54:51.553Z"
+        }
+      },
+      {
+        "role": "assistant",
+        "content": "OK, now let’s talk about the Story, In the last morning chase through the small Belgian town, what’s the one thing that changes how the kids treat the Aixam?",
+        "messageType": "assistant_response",
+        "messageId": "9a3c6547-eeff-438c-b6cb-66bd7819ec3c",
+        "timestamp": {
+          "$date": "2026-03-03T08:54:58.588Z"
+        },
+        "toolCalls": [
+          {
+            "type": "workflow_multiple_choice",
+            "data": {
+              "options": [
+                "A kid’s bike slips on the ice and bumps the Aixam, so everyone freezes.",
+                "The foreman blacks out at the bakery corner, and the kids stop laughing.",
+                "A hospital bill falls from the Aixam, and one kid picks it up quietly.",
+                "An adult sees them pushing the Aixam, so the kids pretend they are helping.",
+                "Other — type your own answer"
+              ]
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 10738,
+          "cached_tokens": 2688,
+          "output_tokens": 404,
+          "total_tokens": 11142
+        }
+      }
+    ],
+    "guruConfig": {
+      "AgenticGuruType": "mini_story",
+      "systemPromptVersion": "guruSystemPrompt_miniStory_02032026",
+      "modelId": "gpt-5.2",
+      "enableAgenticLoop": true
+    }
+  },
+  "nextBestTopics": [
+    {
+      "id": "story:ok-now-lets-talk-about-the-story-in-the-last-morning-chase-through-the-small-belgian-town-whats-the-one-thing-that-changes-how-the-kids-treat-the-aixam",
+      "topic": "story",
+      "label": "OK, now let’s talk about the Story, In the last morning chase through the small Belgian town, what’s the one thing that changes how the kids treat the Aixam?",
+      "actionMessage": "OK, now let’s talk about the Story, In the last morning chase through the small Belgian town, what’s the one thing that changes how the kids treat the Aixam?",
+      "priority": 100,
+      "updatedAt": {
+        "$date": "2026-03-03T08:54:59.086Z"
+      }
+    },
+    {
+      "id": "story:during-that-chase-on-the-cobbled-street-by-the-river-what-is-the-clearest-moment-the-foreman-almost-blacks-out",
+      "topic": "story",
+      "label": "During that chase on the cobbled street by the river, what is the clearest moment the foreman almost blacks out?",
+      "actionMessage": "During that chase on the cobbled street by the river, what is the clearest moment the foreman almost blacks out?",
+      "priority": 50,
+      "updatedAt": {
+        "$date": "2026-03-03T08:54:59.086Z"
+      }
+    },
+    {
+      "id": "character:when-the-kids-spot-him-whats-their-look-like-as-a-group-in-that-street",
+      "topic": "character",
+      "label": "When the kids spot him, what’s their look like as a group in that street?",
+      "actionMessage": "When the kids spot him, what’s their look like as a group in that street?",
+      "priority": 100,
+      "updatedAt": {
+        "$date": "2026-03-03T08:54:59.086Z"
+      }
+    },
+    {
+      "id": "character:whats-one-small-habit-you-can-see-in-the-foreman-even-before-he-talks",
+      "topic": "character",
+      "label": "What’s one small habit you can see in the foreman, even before he talks?",
+      "actionMessage": "What’s one small habit you can see in the foreman, even before he talks?",
+      "priority": 50,
+      "updatedAt": {
+        "$date": "2026-03-03T08:54:59.086Z"
+      }
+    },
+    {
+      "id": "location:whats-the-first-sound-you-hear-on-that-cobbled-street-near-the-river",
+      "topic": "location",
+      "label": "What’s the first sound you hear on that cobbled street near the river?",
+      "actionMessage": "What’s the first sound you hear on that cobbled street near the river?",
+      "priority": 100,
+      "updatedAt": {
+        "$date": "2026-03-03T08:54:59.086Z"
+      }
+    },
+    {
+      "id": "location:whats-one-thing-on-the-street-that-makes-the-plastic-aixam-look-even-more-like-a-toy",
+      "topic": "location",
+      "label": "What’s one thing on the street that makes the plastic Aixam look even more like a toy?",
+      "actionMessage": "What’s one thing on the street that makes the plastic Aixam look even more like a toy?",
+      "priority": 50,
+      "updatedAt": {
+        "$date": "2026-03-03T08:54:59.086Z"
+      }
+    }
+  ],
+  "workflowState": {
+    "mode": "topic",
+    "step": "mc2",
+    "updatedAt": {
+      "$date": "2026-03-03T08:54:58.871Z"
+    },
+    "openFollowupUsed": false,
+    "activeTopicId": "story:queued",
+    "activeTopic": {
+      "topic": "story",
+      "label": "In the last morning chase through the small town, what’s the one thing that changes how the kids treat the Aixam?",
+      "actionMessage": "In the last morning chase through the small town, what’s the one thing that changes how the kids treat the Aixam?"
+    },
+    "topicQueues": {
+      "story": [
+        "OK, now let’s talk about the Story, In the last morning chase through the small Belgian town, what’s the one thing that changes how the kids treat the Aixam?",
+        "During that chase on the cobbled street by the river, what is the clearest moment the foreman almost blacks out?"
+      ],
+      "character": [
+        "When the kids spot him, what’s their look like as a group in that street?",
+        "What’s one small habit you can see in the foreman, even before he talks?"
+      ],
+      "location": [
+        "What’s the first sound you hear on that cobbled street near the river?",
+        "What’s one thing on the street that makes the plastic Aixam look even more like a toy?"
+      ],
+      "updatedAt": {
+        "$date": "2026-03-03T08:54:58.871Z"
+      }
+    }
+  },
+  "topicHistory": [
+    "story",
+    "story",
+    "story",
+    "character",
+    "character",
+    "character",
+    "location",
+    "location",
+    "location",
+    "story"
+  ],
+  "storyData": {
+    "pitch": "Once upon a time, a foreman working in a small town decided to take a job in another town. That second town was far and he needed a car but he had no driving license. He decided to buy a plastic car (Aixam) that required no license but the car looked so much like a toy that all the kids in town were making fun of him and even trying to turn around the car.\n\nEach morning going to work turned into a full exercise of hide from the kids in town and go full gas to escape from them."
+  }
+}

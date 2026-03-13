@@ -1,11 +1,10 @@
 """
 Analytics collections sync script for Metabase.
 
-Populates four denormalized collections in the renderboard database:
-  - analytics_user_snapshots  (upsert by mongoId)
+Populates three denormalized collections in the renderboard database:
+  - analytics_user_snapshots  (upsert by userId)
   - analytics_chat_events     (insert-once by messageId)
   - analytics_daily_stats     (replace by day)
-  - analytics_topic_events    (replace by storyId — one row per pointsEvent)
 
 Usage:
     uv run python -m src.analytics_sync
@@ -41,13 +40,10 @@ def ensure_indexes(db) -> None:
         [("messageId", ASCENDING)], unique=True, background=True
     )
     db["analytics_user_snapshots"].create_index(
-        [("mongoId", ASCENDING)], unique=True, background=True
+        [("userId", ASCENDING)], unique=True, background=True
     )
     db["analytics_daily_stats"].create_index(
         [("day", ASCENDING)], unique=True, background=True
-    )
-    db["analytics_topic_events"].create_index(
-        [("storyId", ASCENDING), ("eventIndex", ASCENDING)], unique=True, background=True
     )
     print("  Indexes verified.")
 
@@ -101,12 +97,11 @@ def process_story(story: dict) -> tuple[dict, list[dict]]:
     char_map = (story.get("improvementState") or {}).get("characters") or {}
     loc_map = (story.get("improvementState") or {}).get("locations") or {}
 
-    # Story status — source of truth is storySubmission.status set by the frontend
-    story_submission = story.get("storySubmission") or {}
-    user_message_count = sum(1 for m in messages if m.get("role") == "user")
-    if story_submission.get("status") == "submitted":
+    # Story status
+    message_count = len(messages)
+    if level >= 4:
         story_status = "submitted"
-    elif user_message_count > 0:
+    elif message_count > 0:
         story_status = "wip"
     else:
         story_status = "not_started"
@@ -118,7 +113,6 @@ def process_story(story: dict) -> tuple[dict, list[dict]]:
     # ---- User snapshot ----
     snapshot = {
         "userId": user_id,
-        "mongoId": story_oid,
         "storyId": story_id,
         "title": title,
         "level": level,
@@ -164,12 +158,6 @@ def process_story(story: dict) -> tuple[dict, list[dict]]:
         usage = msg.get("usage") or {}
         content_raw = msg.get("content") or ""
         has_mcq = bool((msg.get("toolCalls") or []))
-        content_lower = content_raw.strip().lower()
-        is_regen_loop = (
-            role == "user"
-            and msg_class == "mcq_response"
-            and (content_lower.startswith("other") or " other" in content_lower)
-        )
 
         event = {
             "messageId": msg_id,
@@ -179,10 +167,8 @@ def process_story(story: dict) -> tuple[dict, list[dict]]:
             "messageType": msg.get("messageType"),
             "msgClass": msg_class,
             "hasMCQ": has_mcq,
-            "isRegenLoop": is_regen_loop,
             "content": content_raw[:500],
             "timestamp": ts,
-            "timestampStr": ts.strftime("%Y-%m-%d %H:%M:%S") if ts else None,
             "day": day_str,
             "level": level,
             "inputTokens": usage.get("input_tokens", 0) or 0,
@@ -198,25 +184,7 @@ def process_story(story: dict) -> tuple[dict, list[dict]]:
         elif role == "user":
             prev_assistant_ts = None
 
-    # ---- Topic events (one per pointsEvent entry) ----
-    topic_events: list[dict] = []
-    for i, pe in enumerate(points_events):
-        ts = _parse_ts(pe.get("createdAt"))
-        topic_events.append({
-            "storyId": story_id,
-            "userId": user_id,
-            "eventIndex": i,
-            "eventType": pe.get("type"),
-            "topic": pe.get("topic"),
-            "quality": pe.get("score"),
-            "gained": pe.get("gained"),
-            "totalAfter": pe.get("totalAfter"),
-            "createdAt": ts,
-            "day": ts.strftime("%Y-%m-%d") if ts else None,
-            "isTest": is_test,
-        })
-
-    return snapshot, chat_events, topic_events
+    return snapshot, chat_events
 
 
 # ---------------------------------------------------------------------------
@@ -284,15 +252,13 @@ def sync_all(include_test: bool = False) -> None:
 
     all_snapshots: list[dict] = []
     all_events: list[dict] = []
-    all_topic_events: list[dict] = []
     daily_buckets: dict[str, list[dict]] = {}
 
     for story in stories:
         try:
-            snapshot, events, topic_events = process_story(story)
+            snapshot, events = process_story(story)
             all_snapshots.append(snapshot)
             all_events.extend(events)
-            all_topic_events.extend(topic_events)
             for event in events:
                 day = event.get("day")
                 if day:
@@ -304,7 +270,7 @@ def sync_all(include_test: bool = False) -> None:
     snap_upserted = 0
     for snap in all_snapshots:
         db["analytics_user_snapshots"].replace_one(
-            {"mongoId": snap["mongoId"]}, snap, upsert=True
+            {"userId": snap["userId"]}, snap, upsert=True
         )
         snap_upserted += 1
     print(f"  Upserted {snap_upserted} user snapshots.")
@@ -329,17 +295,6 @@ def sync_all(include_test: bool = False) -> None:
         db["analytics_daily_stats"].replace_one({"day": day}, stats, upsert=True)
         days_written += 1
     print(f"  Wrote {days_written} daily stat records.")
-
-    # Replace topic events per story (full replace so re-runs are idempotent)
-    topic_upserted = 0
-    for te in all_topic_events:
-        db["analytics_topic_events"].replace_one(
-            {"storyId": te["storyId"], "eventIndex": te["eventIndex"]},
-            te,
-            upsert=True,
-        )
-        topic_upserted += 1
-    print(f"  Upserted {topic_upserted} topic events.")
 
     print("Sync complete.")
 

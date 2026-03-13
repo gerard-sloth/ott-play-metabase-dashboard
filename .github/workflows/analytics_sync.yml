@@ -1,0 +1,24 @@
+name: Analytics ETL Sync
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # every hour
+  workflow_dispatch:        # allow manual trigger from GitHub UI
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Run ETL sync
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+        run: uv run python -m src.analytics_sync
